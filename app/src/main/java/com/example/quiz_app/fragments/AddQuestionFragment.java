@@ -2,11 +2,13 @@ package com.example.quiz_app.fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.quiz_app.MainActivity;
 import com.example.quiz_app.R;
 
 /**
@@ -26,5 +28,14 @@ public class AddQuestionFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_question, container, false);
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity.databaseCreator.createDb(mainActivity.getApplication());
+        mainActivity.databaseCreator.getDatabase();
+    }
+
 
 }

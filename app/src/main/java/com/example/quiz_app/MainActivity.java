@@ -14,14 +14,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.example.quiz_app.fragments.AddQuestionFragment;
 import com.example.quiz_app.fragments.NewQuizFragment;
+import com.example.quiz_app.sqlite_db.DatabaseCreator;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public final DatabaseCreator databaseCreator = DatabaseCreator.getInstance(this.getApplication());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,10 +101,4 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
     }
 
-    public void goToAddQuestionFragment(View view) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fluid_container, new AddQuestionFragment());
-        transaction.commit();
-    }
 }

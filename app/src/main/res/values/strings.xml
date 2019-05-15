@@ -25,7 +25,7 @@
     <string name="quiz_name">Quiz name</string>
     <string name="enter_quiz">Enter quiz name</string>
     <string name="max_time">Maximum time to complete</string>
-    <string name="in_minutes">In minutes(number)</string>
+    <string name="in_minutes">In minutes(optional)</string>
     <string name="max_score">Maximum score per question</string>
     <string name="enter_score">Enter score number</string>
     <string name="max_attemps">Maximum quiz attemps</string>

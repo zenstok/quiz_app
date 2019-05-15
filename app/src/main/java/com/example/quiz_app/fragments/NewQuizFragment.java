@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.quiz_app.MainActivity;
 import com.example.quiz_app.R;
 
 /**
@@ -42,13 +45,35 @@ public class NewQuizFragment extends Fragment {
         mNextButton = getView().findViewById(R.id.next);
         mQuizNameInput = getView().findViewById(R.id.quiz_name_input);
         mQuizTimeInput = getView().findViewById(R.id.quiz_time_input);
+        mQuizScoreInput = getView().findViewById(R.id.quiz_score_input);
+        mQuizAttempsInput = getView().findViewById(R.id.quiz_attemps_input);
+        mQuizPinInput = getView().findViewById(R.id.quiz_pin_input);
+
         final Activity activity = this.getActivity();
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(activity,"Dubsta 6x6",Toast.LENGTH_SHORT).show();
+                if (isValid() == true) {
+                    goToAddQuestionFragment();
+                } else {
+                    Toast.makeText(activity, "Please fill in all required fields!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            private boolean isValid() {
+                if (mQuizNameInput.getText().toString().length() != 0 && mQuizScoreInput.getText().toString().length() != 0 && mQuizAttempsInput.getText().toString().length() != 0) {
+                    return true;
+                }
+                return false;
             }
         });
+    }
+
+    private void goToAddQuestionFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fluid_container, new AddQuestionFragment());
+        transaction.commit();
     }
 
 }
