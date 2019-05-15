@@ -3,6 +3,8 @@ package com.example.quiz_app;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +15,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+
+import com.example.quiz_app.fragments.NewQuizFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -80,15 +84,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_new_quiz) {
+            openNewQuizFragment();
+        } else if (id == R.id.nav_quiz_list) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_student_list) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_user_settings) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_app_settings) {
 
         }
 
@@ -96,4 +100,12 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void openNewQuizFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fluid_container, new NewQuizFragment());
+        transaction.commit();
+    }
+
 }

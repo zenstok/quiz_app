@@ -13,4 +13,16 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="create_new_quiz">Create new quiz</string>
+    <string name="menu_quizes">Quizes</string>
+    <string name="menu_student_groups">Student groups</string>
+    <string name="menu_user_settings">User settings</string>
+    <string name="menu_app_settings">App settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_a_new_quiz">Add a new quiz</string>
+    <string name="quiz_name">Quiz name</string>
+    <string name="max_time">Maximum time to complete</string>
+    <string name="in_minutes">In minutes</string>
 </resources>

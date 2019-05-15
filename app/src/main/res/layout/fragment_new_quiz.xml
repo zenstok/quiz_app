@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".fragments.NewQuizFragment">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_a_new_quiz"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/in_minutes"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="188dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <TextView
+        android:id="@+id/quiz_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz_name"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <TextView
+        android:id="@+id/time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/max_time"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="204dp"
+        tools:layout_editor_absoluteY="264dp" />
+
+    <TextView
+        android:id="@+id/quiz_name_label3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz_name"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="306dp" />
+
+</android.support.constraint.ConstraintLayout>
