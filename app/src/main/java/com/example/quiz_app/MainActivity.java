@@ -14,6 +14,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.quiz_app.fragments.AddQuestionFragment;
 import com.example.quiz_app.fragments.NewQuizFragment;
