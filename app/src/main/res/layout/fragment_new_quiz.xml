@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
     tools:context=".fragments.NewQuizFragment">
 
 
@@ -13,8 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="540dp"
         android:text="@string/add_a_new_quiz"
         android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,54 +27,122 @@
         android:ems="10"
         android:hint="@string/in_minutes"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="188dp" />
+        app:layout_constraintStart_toStartOf="@+id/quiz_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_time_label" />
+
+    <EditText
+        android:id="@+id/quiz_name_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_quiz"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/quiz_name_label"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_name_label" />
+
+    <EditText
+        android:id="@+id/quiz_attemps_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_attemps"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/quiz_attemps_label"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_attemps_label" />
+
+    <EditText
+        android:id="@+id/quiz_pin_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/optional"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/quiz_pin_label"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_pin_label" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/enter_score"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="230dp" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintStart_toStartOf="@+id/quiz_score_label2"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_score_label2" />
 
     <TextView
         android:id="@+id/quiz_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="128dp"
         android:text="@string/quiz_name"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="185dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/time_label"
+        android:id="@+id/quiz_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="30dp"
         android:text="@string/max_time"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="204dp"
-        tools:layout_editor_absoluteY="264dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_name_input" />
 
     <TextView
-        android:id="@+id/quiz_name_label3"
+        android:id="@+id/quiz_attemps_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quiz_name"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/max_attemps"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="306dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <TextView
+        android:id="@+id/quiz_pin_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/pin"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_attemps_input" />
+
+    <TextView
+        android:id="@+id/quiz_score_label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="29dp"
+        android:text="@string/max_score"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="322dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/next"
+        android:onClick="goToAddQuestionFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_pin_input"
+        app:layout_constraintVertical_bias="0.737" />
 
 </android.support.constraint.ConstraintLayout>

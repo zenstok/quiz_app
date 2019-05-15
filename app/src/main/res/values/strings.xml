@@ -23,6 +23,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_a_new_quiz">Add a new quiz</string>
     <string name="quiz_name">Quiz name</string>
+    <string name="enter_quiz">Enter quiz name</string>
     <string name="max_time">Maximum time to complete</string>
-    <string name="in_minutes">In minutes</string>
+    <string name="in_minutes">In minutes(number)</string>
+    <string name="max_score">Maximum score per question</string>
+    <string name="enter_score">Enter score number</string>
+    <string name="max_attemps">Maximum quiz attemps</string>
+    <string name="enter_attemps">Enter attemps number</string>
+    <string name="pin">Pin for quiz access</string>
+    <string name="optional">(optional)</string>
+    <string name="next">Next</string>
 </resources>
