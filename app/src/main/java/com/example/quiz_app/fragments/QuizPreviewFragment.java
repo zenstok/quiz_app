@@ -4,9 +4,7 @@ package com.example.quiz_app.fragments;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.quiz_app.MainActivity;
 import com.example.quiz_app.R;
-import com.example.quiz_app.sqlite_db.AppDatabase;
 import com.example.quiz_app.sqlite_db.entities.NewQuizInstance;
 
 /**
@@ -32,7 +29,11 @@ public class QuizPreviewFragment extends Fragment {
         @Override
         protected void onPostExecute(NewQuizInstance newQuizInstance) {
             MainActivity mainActivity= (MainActivity)getActivity();
-//            ((TextView)mainActivity.findViewById(R.id.quiz_content_room)).setText(newQuizInstance.getName());
+            ((TextView)mainActivity.findViewById(R.id.quiz_name_val)).setText(newQuizInstance.getName());
+            ((TextView)mainActivity.findViewById(R.id.time_val)).setText(String.valueOf(newQuizInstance.getTime()));
+            ((TextView)mainActivity.findViewById(R.id.score_val)).setText(String.valueOf(newQuizInstance.getScore()));
+            ((TextView)mainActivity.findViewById(R.id.attemps_val)).setText(String.valueOf(newQuizInstance.getAttemps()));
+            ((TextView)mainActivity.findViewById(R.id.pin_val)).setText(newQuizInstance.getPin());
         }
     }
 

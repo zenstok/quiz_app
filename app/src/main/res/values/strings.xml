@@ -34,4 +34,7 @@
     <string name="optional">(optional)</string>
     <string name="next">Next</string>
     <string name="save">save</string>
+    <string name="x_minutes">x minutes</string>
+    <string name="add_new_question">Add new question</string>
+    <string name="question_list">Question list:</string>
 </resources>
