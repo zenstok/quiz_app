@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.quiz_app.MainActivity;
 import com.example.quiz_app.R;
+import com.example.quiz_app.sqlite_db.entities.NewQuizInstance;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,6 +55,12 @@ public class NewQuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (isValid() == true) {
+                    NewQuizInstance nqi = new NewQuizInstance(1,mQuizNameInput.getText().toString(),Integer.parseInt(mQuizTimeInput.getText().toString()),
+                            Integer.parseInt(mQuizScoreInput.getText().toString()),Integer.parseInt(mQuizAttempsInput.getText().toString()),mQuizPinInput.getText().toString());
+
+                    MainActivity mainActivity = (MainActivity) getActivity();
+                    mainActivity.databaseCreator.createDb(mainActivity.getApplication(), nqi);
+
                     goToAddQuestionFragment();
                 } else {
                     Toast.makeText(activity, "Please fill in all required fields!", Toast.LENGTH_SHORT).show();
@@ -72,7 +79,7 @@ public class NewQuizFragment extends Fragment {
     private void goToAddQuestionFragment() {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fluid_container, new AddQuestionFragment());
+        transaction.replace(R.id.fluid_container, new QuizPreviewFragment());
         transaction.commit();
     }
 

@@ -8,6 +8,8 @@ import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.quiz_app.sqlite_db.entities.NewQuizInstance;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.example.quiz_app.sqlite_db.AppDatabase.DATABASE_NAME;
@@ -55,7 +57,7 @@ public class DatabaseCreator {
      * Although this uses an AsyncTask which currently uses a serial executor, it's thread-safe.
      */
     @SuppressLint("StaticFieldLeak")
-    public void createDb(Context context) {
+    public void createDb(Context context, final NewQuizInstance nqi) {
 
         Log.d("DatabaseCreator", "Creating DB from " + Thread.currentThread().getName());
 
@@ -83,7 +85,7 @@ public class DatabaseCreator {
 //                addDelay();
 
                 // Add some data to the database
-                DatabaseInitializer.initializeDb(db);
+                DatabaseInitializer.initializeDb(db, nqi);
                 Log.d("DatabaseCreator",
                         "DB was populated in thread " + Thread.currentThread().getName());
 
