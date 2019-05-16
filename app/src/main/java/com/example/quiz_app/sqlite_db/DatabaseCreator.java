@@ -80,7 +80,7 @@ public class DatabaseCreator {
                 AppDatabase db = AppDatabase.getAppDatabase(context);
 
                 // Add a delay to simulate a long-running operation
-                addDelay();
+//                addDelay();
 
                 // Add some data to the database
                 DatabaseInitializer.initializeDb(db);
@@ -98,14 +98,5 @@ public class DatabaseCreator {
             }
         }.execute(context.getApplicationContext());
     }
-
-    private void addDelay() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException ignored) {
-        }
-    }
-
-
 
 }
