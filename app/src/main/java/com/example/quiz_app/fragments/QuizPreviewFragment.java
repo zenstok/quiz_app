@@ -32,7 +32,7 @@ public class QuizPreviewFragment extends Fragment {
         @Override
         protected void onPostExecute(NewQuizInstance newQuizInstance) {
             MainActivity mainActivity= (MainActivity)getActivity();
-            ((TextView)mainActivity.findViewById(R.id.quiz_content_room)).setText(newQuizInstance.getName());
+//            ((TextView)mainActivity.findViewById(R.id.quiz_content_room)).setText(newQuizInstance.getName());
         }
     }
 
