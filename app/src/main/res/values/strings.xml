@@ -49,5 +49,5 @@
     <string name="choose_email">Choose your email address</string>
     <string name="choose_password">Choose your password</string>
     <string name="create_account">Create account</string>
-    <string name="account_hint">Already have an account? Press the button below.t</string>
+    <string name="account_hint">Already have an account? Press the button below to log in</string>
 </resources>
