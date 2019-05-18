@@ -37,4 +37,6 @@
     <string name="x_minutes">x minutes</string>
     <string name="add_new_question">Add new question</string>
     <string name="question_list">Question list:</string>
+    <string name="no_account_hint">Don\'t have an account? Press the button below to sign up!</string>
+    <string name="account_login">Account Login</string>
 </resources>
