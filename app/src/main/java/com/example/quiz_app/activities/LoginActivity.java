@@ -82,4 +82,8 @@ public class LoginActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    public void signUp(View view) {
+        Intent goToSignUpActivity = new Intent(LoginActivity.this, SignUpActivity.class);
+        startActivity(goToSignUpActivity);
+    }
 }

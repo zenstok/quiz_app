@@ -44,6 +44,10 @@
     <string name="student">Student</string>
     <string name="professor">Professor</string>
     <string name="login">Log in</string>
-    <string name="singup">Sign up</string>
+    <string name="signup">Sign up</string>
     <string name="log_out">Log out</string>
+    <string name="choose_email">Choose your email address</string>
+    <string name="choose_password">Choose your password</string>
+    <string name="create_account">Create account</string>
+    <string name="account_hint">Already have an account? Press the button below.t</string>
 </resources>
