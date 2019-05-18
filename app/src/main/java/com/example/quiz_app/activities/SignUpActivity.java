@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.quiz_app.R;
 
-public class SingUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="userSharedPreferences">user_shared_preferences</string>
+    <string name="user_email">user_email</string>
+    <string name="user_type">user_type</string>
+</resources>

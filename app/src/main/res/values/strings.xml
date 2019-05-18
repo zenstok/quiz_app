@@ -39,4 +39,11 @@
     <string name="question_list">Question list:</string>
     <string name="no_account_hint">Don\'t have an account? Press the button below to sign up!</string>
     <string name="account_login">Account Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="student">Student</string>
+    <string name="professor">Professor</string>
+    <string name="login">Log in</string>
+    <string name="singup">Sign up</string>
+    <string name="log_out">Log out</string>
 </resources>

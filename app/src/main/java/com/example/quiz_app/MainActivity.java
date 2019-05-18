@@ -1,5 +1,8 @@
 package com.example.quiz_app;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +17,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
+
+import com.example.quiz_app.activities.LoginActivity;
 import com.example.quiz_app.fragments.NewQuizFragment;
 import com.example.quiz_app.sqlite_db.DatabaseCreator;
 
@@ -35,6 +41,32 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        setUserInfo(navigationView.getHeaderView(0));
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(LoginActivity.mAuth.getCurrentUser() == null) {
+            Intent goToLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(goToLoginActivity);
+        }
+    }
+
+    private void setUserInfo(View headerView) {
+        TextView emailNavHeader = headerView.findViewById(R.id.email_nav_header);
+        TextView userTypeNavHeader = headerView.findViewById(R.id.user_type_nav_header);
+
+        if(getIntent().getBooleanExtra("changeUserInfo", false) == true) {
+            SharedPreferences userSharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.userSharedPreferences), Context.MODE_PRIVATE);
+            String emailKey = getString(R.string.user_email);
+            String userTypeKey = getString(R.string.user_type);
+
+            emailNavHeader.setText(userSharedPreferences.getString(emailKey, "default@default.ro"));
+            userTypeNavHeader.setText(userSharedPreferences.getString(userTypeKey, "Default"));
+        }
     }
 
     @Override
@@ -76,7 +108,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_new_quiz) {
             openNewQuizFragment();
         } else if (id == R.id.nav_quiz_list) {
@@ -87,6 +119,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_app_settings) {
 
+        } else if (id == R.id.nav_app_logout) {
+            LoginActivity.mAuth.signOut();
+            Intent goToLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(goToLoginActivity);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
