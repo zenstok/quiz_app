@@ -4,10 +4,15 @@ package com.example.quiz_app.fragments;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.quiz_app.MainActivity;
@@ -18,6 +23,7 @@ import com.example.quiz_app.sqlite_db.entities.NewQuizInstance;
  * A simple {@link Fragment} subclass.
  */
 public class QuizPreviewFragment extends Fragment {
+    Button mAddNewQuestion;
 
     private class DbOperations extends AsyncTask<Void,Void, NewQuizInstance> {
         @Override
@@ -62,5 +68,25 @@ public class QuizPreviewFragment extends Fragment {
 
         DbOperations putQuizDetailInView = new DbOperations();
         putQuizDetailInView.execute();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mAddNewQuestion = getView().findViewById(R.id.add_new_question);
+
+        mAddNewQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToAddQuestionFragment();
+            }
+        });
+    }
+
+    private void goToAddQuestionFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fluid_container, new AddQuestionFragment());
+        transaction.commit();
     }
 }

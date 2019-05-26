@@ -61,7 +61,7 @@ public class NewQuizFragment extends Fragment {
                     MainActivity mainActivity = (MainActivity) getActivity();
                     mainActivity.databaseCreator.createDb(mainActivity.getApplication(), nqi);
 
-                    goToAddQuestionFragment();
+                    goToQuizPreviewFragment();
                 } else {
                     Toast.makeText(activity, "Please fill in all required fields!", Toast.LENGTH_SHORT).show();
                 }
@@ -76,7 +76,7 @@ public class NewQuizFragment extends Fragment {
         });
     }
 
-    private void goToAddQuestionFragment() {
+    private void goToQuizPreviewFragment() {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fluid_container, new QuizPreviewFragment());

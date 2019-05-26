@@ -50,4 +50,11 @@
     <string name="choose_password">Choose your password</string>
     <string name="create_account">Create account</string>
     <string name="account_hint">Already have an account? Press the button below to log in</string>
+    <string name="question">Question</string>
+    <string name="question_type">Question Type</string>
+    <string name="free_answer">Add a new question</string>
+    <string name="multiple_choice_unique">Multiple choice, unique answer</string>
+    <string name="multiple_choice_multiple">Multiple choice, multiple answer</string>
+    <string name="free_response">Free response answer</string>
+    <string name="add_question">Add question</string>
 </resources>
