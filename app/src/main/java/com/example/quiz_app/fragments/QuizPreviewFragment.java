@@ -1,6 +1,7 @@
 package com.example.quiz_app.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.quiz_app.MainActivity;
 import com.example.quiz_app.R;
+import com.example.quiz_app.sqlite_db.AppDatabase;
 import com.example.quiz_app.sqlite_db.entities.NewQuizInstance;
 
 /**
@@ -63,9 +66,21 @@ public class QuizPreviewFragment extends Fragment {
 //    }
 
     @Override
+    @SuppressLint("StaticFieldLeak")
     public void onAttach(Context context) {
         super.onAttach(context);
 
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                AppDatabase db = ((MainActivity)getActivity()).databaseCreator.getDatabase();
+                if(db.questionDao().getAllQuestions().size() != 0)
+                    Log.e("BANANA", db.questionDao().getAllQuestions().toString());
+
+                //put question to new quiz instance
+                return null;
+            }
+        }.execute();
         DbOperations putQuizDetailInView = new DbOperations();
         putQuizDetailInView.execute();
     }
