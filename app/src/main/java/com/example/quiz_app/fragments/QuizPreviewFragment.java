@@ -10,6 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +21,21 @@ import android.widget.TextView;
 
 import com.example.quiz_app.MainActivity;
 import com.example.quiz_app.R;
+import com.example.quiz_app.complexViews.recyclerViewQuestions.QuestionAdapter;
 import com.example.quiz_app.sqlite_db.AppDatabase;
 import com.example.quiz_app.sqlite_db.entities.NewQuizInstance;
+import com.example.quiz_app.sqlite_db.entities.Question;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class QuizPreviewFragment extends Fragment {
     Button mAddNewQuestion;
+    RecyclerView mRecylerViewQuestions;
+    List<Question> mQuestions;
 
     private class DbOperations extends AsyncTask<Void,Void, NewQuizInstance> {
         @Override
@@ -43,6 +52,21 @@ public class QuizPreviewFragment extends Fragment {
             ((TextView)mainActivity.findViewById(R.id.score_val)).setText(String.valueOf(newQuizInstance.getScore()));
             ((TextView)mainActivity.findViewById(R.id.attemps_val)).setText(String.valueOf(newQuizInstance.getAttemps()));
             ((TextView)mainActivity.findViewById(R.id.pin_val)).setText(newQuizInstance.getPin());
+        }
+    }
+
+    private class SetQuestions extends AsyncTask<Void,Void, List<Question>> {
+        @Override
+        protected List<Question> doInBackground(Void... voids) {
+            MainActivity mainActivity= (MainActivity)getActivity();
+            return mainActivity.databaseCreator.getDatabase().questionDao().findQuestionsForQuiz(1);
+        }
+
+        @Override
+        protected void onPostExecute(List<Question> questions) {
+            mQuestions = questions;
+            setLayoutManager();
+            setAdapter();
         }
     }
 
@@ -66,21 +90,9 @@ public class QuizPreviewFragment extends Fragment {
 //    }
 
     @Override
-    @SuppressLint("StaticFieldLeak")
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                AppDatabase db = ((MainActivity)getActivity()).databaseCreator.getDatabase();
-                if(db.questionDao().getAllQuestions().size() != 0)
-                    Log.e("BANANA", db.questionDao().getAllQuestions().toString());
-
-                //put question to new quiz instance
-                return null;
-            }
-        }.execute();
         DbOperations putQuizDetailInView = new DbOperations();
         putQuizDetailInView.execute();
     }
@@ -89,6 +101,13 @@ public class QuizPreviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAddNewQuestion = getView().findViewById(R.id.add_new_question);
+        mRecylerViewQuestions = getView().findViewById(R.id.recycler_view_questions);
+
+//        setLayoutManager();
+//        setQuestions();
+        SetQuestions setQuestions = new SetQuestions();
+        setQuestions.execute();
+//        setAdapter();
 
         mAddNewQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,4 +123,25 @@ public class QuizPreviewFragment extends Fragment {
         transaction.replace(R.id.fluid_container, new AddQuestionFragment());
         transaction.commit();
     }
+
+    private void setLayoutManager() {
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(getActivity());
+        mRecylerViewQuestions.setLayoutManager(layoutManager);
+    }
+
+    private void setAdapter() {
+        QuestionAdapter questionAdapter = new QuestionAdapter(mQuestions);
+        mRecylerViewQuestions.setAdapter(questionAdapter);
+    }
+
+    private void setQuestions() {
+        mQuestions = new ArrayList<Question>();
+        mQuestions.add(new Question(1,"Ana are mere", 50));
+        mQuestions.add(new Question(1,"Ana are mere", 50));
+        mQuestions.add(new Question(1,"Ana are mere", 50));
+        mQuestions.add(new Question(1,"Ana are mere", 50));
+    }
+
+
 }

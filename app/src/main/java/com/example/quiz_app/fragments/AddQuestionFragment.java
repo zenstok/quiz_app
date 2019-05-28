@@ -56,7 +56,7 @@ public class AddQuestionFragment extends Fragment {
                     protected Void doInBackground(Void... voids) {
                         AppDatabase db = ((MainActivity)getActivity()).databaseCreator.getDatabase();
                         db.questionDao().insert(new Question(0,mQuestionText.getText().toString(),1));
-                        
+
                         return null;
                     }
                 }.execute();
