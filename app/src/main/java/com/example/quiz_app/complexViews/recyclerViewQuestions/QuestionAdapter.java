@@ -13,6 +13,7 @@ import java.util.List;
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionViewHolder> {
     private List<Question> mQuestions;
+    private int numberOfQuestions = 0;
 
     public QuestionAdapter(List<Question> questions) {
         mQuestions = questions;
@@ -29,7 +30,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionViewHolder> {
     public void onBindViewHolder(@NonNull QuestionViewHolder questionViewHolder, int i) {
         Question currentQuestion = mQuestions.get(i);
         if (currentQuestion != null) {
-//                questionViewHolder.getTextViewQuestionIterator().setText(getItemCount());
+            questionViewHolder.getTextViewQuestionIterator().setText("Question "+String.valueOf(++numberOfQuestions));
             if (currentQuestion.getText() != null) {
                 questionViewHolder.getTextViewQuestionText().setText(currentQuestion.getText());
             }

@@ -2,6 +2,7 @@ package com.example.quiz_app.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,11 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.quiz_app.MainActivity;
 import com.example.quiz_app.R;
 import com.example.quiz_app.sqlite_db.AppDatabase;
-import com.example.quiz_app.sqlite_db.entities.NewQuizInstance;
 import com.example.quiz_app.sqlite_db.entities.Question;
 
 /**
@@ -51,16 +52,20 @@ public class AddQuestionFragment extends Fragment {
         mAddQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... voids) {
-                        AppDatabase db = ((MainActivity)getActivity()).databaseCreator.getDatabase();
-                        db.questionDao().insert(new Question(0,mQuestionText.getText().toString(),1));
+                if(mQuestionText.getText().toString().length() != 0) {
+                    new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+                            AppDatabase db = ((MainActivity) getActivity()).databaseCreator.getDatabase();
+                            db.questionDao().insert(new Question(0, mQuestionText.getText().toString(), 1));
 
-                        return null;
-                    }
-                }.execute();
-                goToQuizPreviewFragment();
+                            return null;
+                        }
+                    }.execute();
+                    goToQuizPreviewFragment();
+                } else {
+                    Toast.makeText(getContext(),getString(R.string.no_question_text), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -57,4 +57,7 @@
     <string name="multiple_choice_multiple">Multiple choice, multiple answer</string>
     <string name="free_response">Free response answer</string>
     <string name="add_question">Add question</string>
+    <string name="no_question_text">Please fill in the question text.</string>
+    <string name="no_questions">The quiz should have at least one question!</string>
+    <string name="quiz_created_successfully">Quiz created successfully!</string>
 </resources>

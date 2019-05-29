@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("user_email", user.getEmail());
 
         String domain = user.getEmail().split("@")[1];
-        if (domain.split("\\.")[0] == "stud") {
+        if (domain.split("\\.")[0].equals("stud")) {
             editor.putString("user_type", "Student");
         } else {
             editor.putString("user_type", "Professor");
