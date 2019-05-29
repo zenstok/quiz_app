@@ -123,13 +123,13 @@ public class QuizPreviewFragment extends Fragment {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Log.d("FIREBASE APP", "DocumentSnapshot added with ID: " + documentReference.getId());
-                                    for(Question question: mQuestions) {
+                                    for (Question question : mQuestions) {
                                         documentReference.collection("questions").add(question);
                                     }
 
                                     deleteQuizPreviewFromDb();
                                     goToQuizesFragment();
-                                    Toast.makeText(getContext(),getString(R.string.quiz_created_successfully), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), getString(R.string.quiz_created_successfully), Toast.LENGTH_LONG).show();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -140,7 +140,7 @@ public class QuizPreviewFragment extends Fragment {
                             });
 
                 } else {
-                    Toast.makeText(getContext(),getString(R.string.no_questions), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.no_questions), Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.quiz_app.activities.LoginActivity;
 import com.example.quiz_app.fragments.NewQuizFragment;
+import com.example.quiz_app.fragments.QuizesFragment;
 import com.example.quiz_app.sqlite_db.DatabaseCreator;
 
 public class MainActivity extends AppCompatActivity
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_new_quiz) {
             openNewQuizFragment();
         } else if (id == R.id.nav_quiz_list) {
-
+            openQuizzesFragment();
         } else if (id == R.id.nav_student_list) {
 
         } else if (id == R.id.nav_user_settings) {
@@ -133,6 +134,13 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fluid_container, new NewQuizFragment());
+        transaction.commit();
+    }
+
+    private void openQuizzesFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fluid_container, new QuizesFragment());
         transaction.commit();
     }
 
